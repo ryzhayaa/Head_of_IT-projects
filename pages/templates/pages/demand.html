@@ -1,0 +1,23 @@
+{% extends 'pages/base.html' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'pages/styles.css' %}">
+<canvas id="myChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'pages/charts.js' %}"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ average_salary_by_year.keys|safe }},
+        datasets: [{
+            label: 'Средняя зарплата',
+            data: {{ average_salary_by_year.values|safe }},
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    }
+});
+</script>

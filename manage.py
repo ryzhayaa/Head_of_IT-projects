@@ -20,3 +20,24 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+import csv
+import datetime
+from django.core.management.base import BaseCommand
+from pages.models import Job
+
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        with open('vacancies.csv', 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                job = Job(
+                    name=row['name'],
+                    key_skills=row['key_skills'],
+                    salary_from=float(row['salary_from']) if row['salary_from'] else None,
+                    salary_to=float(row['salary_to']) if row['salary_to'] else None,
+                    salary_currency=row['salary_currency'],
+                    area_name=row['area_name'],
+                    published_at=datetime.datetime.strptime(row['published_at'], '%Y-%m-%dT%H:%M:%S%z')
+                )
+                job.save()

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш проект</title>
+<link rel="stylesheet" type="text/css" href="{% static 'pages/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Название вашего проекта</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/demand">Востребованность</a></li>
+            <li><a href="/geography">География</a></li>
+            <li><a href="/skills">Навыки</a></li>
+            <li><a href="/latest-jobs">Последние вакансии</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    <!-- Здесь будет контент из других шаблонов -->
+    {% endblock %}
+    <footer>
+        <p>Ваше полное имя и академическая группа</p>
+    </footer>
+    <script src="{% static 'pages/charts.js' %}"></script>
+</body>
+</html>

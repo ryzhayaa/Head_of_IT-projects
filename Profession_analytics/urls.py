@@ -21,3 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
 ]
+
+from django.urls import path
+from pages import views
+
+urlpatterns = [
+    path('', views.first_view, name='index'), 
+    path('demand/', views.second_view, name='demand'), 
+]

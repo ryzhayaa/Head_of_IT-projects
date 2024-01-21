@@ -1,14 +1,43 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Main page</title>
-    </head>
-    <body>
-        <div style="text-align: center;">
-            <h1>HEADER</h1>
-            <p>
-                lalalalalallalalallaaaaaaaaaaaalalaaalalalalallalallalalalalal
-            </p>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналитика профессий</title>
+<link rel="stylesheet" type="text/css" href="{% static 'pages/styles.css' %}">
+</head>
+<body>
+    <style>
+        body {
+            background-image: url('{% static "pages/images/15fa8edc-7a88-4eac-9da0-3a05782c27f2.jpg" %}');
+            background-size: cover; /* Покрывает весь элемент */
+            background-repeat: no-repeat; /* Предотвращает повторение изображения */
+        }
+    </style>
+    
 
-        </div>
-    </body>
+    <header>
+        <h1><b class="name">Аналитика профессий:
+            <p>узнайте, насколько</p>
+             <p>востребована ваша</p> 
+             <p>профессия</p></b></h1>
+    </header>
+
+    <div class="text">Анализируйте динамику зарплат, количество вакансий,
+        <p>географию и требуемые навыки для вашей профессии</p></div>
+    <nav>
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/demand">Востребованность</a></li>
+            <li><a href="/geography">География</a></li>
+            <li><a href="/skills">Навыки</a></li>
+            <li><a href="/latest-jobs">Последние вакансии</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    <!-- Здесь будет контент из других шаблонов -->
+    {% endblock %}
+    <script src="{% static 'pages/charts.js' %}"></script>
+</body>
 </html>
